@@ -53,6 +53,7 @@ export class KSSwiperContainer {
     const nativeElement = this.elementRef.nativeElement;
     setTimeout(() => {
       this.swiper = new Swiper(nativeElement.children[0], this.options);
+      this.update();
     });
   }
 
@@ -72,14 +73,17 @@ export class KSSwiperContainer {
 export class KSSwiperSlide {
 
   private ele: HTMLElement;
-
+  private swiper: KSSwiperContainer;
   constructor(
     @Inject(ElementRef) elementRef: ElementRef,
     @Host() @Inject(KSSwiperContainer) swiper: KSSwiperContainer
   ) {
     this.ele = elementRef.nativeElement;
     this.ele.classList.add('swiper-slide');
+    this.swiper = swiper;
+  }
 
-    swiper.update();
+  ngOnInit() {
+      this.swiper.update();
   }
 }
