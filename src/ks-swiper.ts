@@ -53,7 +53,6 @@ export class KSSwiperContainer {
     const nativeElement = this.elementRef.nativeElement;
     setTimeout(() => {
       this.swiper = new Swiper(nativeElement.children[0], this.options);
-      this.update();
     });
   }
 
